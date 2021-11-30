@@ -86,6 +86,7 @@
   ./services/synergy
   ./services/tailscale.nix
   ./services/trezord.nix
+  ./services/telegraf.nix
   ./services/wg-quick.nix
   ./services/yabai
   ./services/nextdns
