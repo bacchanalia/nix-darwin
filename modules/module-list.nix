@@ -83,6 +83,7 @@
   ./services/spacebar
   ./services/synapse-bt.nix
   ./services/synergy
+  ./services/system/self-deploy.nix
   ./services/tailscale.nix
   ./services/trezord.nix
   ./services/telegraf.nix
