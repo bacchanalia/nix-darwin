@@ -78,6 +78,7 @@
   ./services/privoxy
   ./services/redis
   ./services/sketchybar
+  ./services/scheduling/cron.nix
   ./services/skhd
   ./services/spacebar
   ./services/synapse-bt.nix
