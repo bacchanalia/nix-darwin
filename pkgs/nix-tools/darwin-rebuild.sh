@@ -55,7 +55,7 @@ while [ $# -gt 0 ]; do
     -j[0-9]*)
       extraBuildFlags+=("$i")
       ;;
-    --max-jobs|-j|--cores|-I)
+    --max-jobs|-j|--cores|-I|--access-tokens)
       if [ $# -lt 1 ]; then
         echo "$0: '$i' requires an argument"
         exit 1
