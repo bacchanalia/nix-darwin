@@ -92,7 +92,7 @@ let
     requireSignedBinaryCaches = "require-sigs";
     trustedUsers = "trusted-users";
     allowedUsers = "allowed-users";
-    # systemFeatures = "system-features";
+    systemFeatures = "system-features";
   };
 
   semanticConfType = with types;
@@ -607,20 +607,20 @@ in
               '';
             };
 
-            # Not implemented yet
-            # system-features = mkOption {
-            #   type = types.listOf types.str;
-            #   example = [ "kvm" "big-parallel" "gccarch-skylake" ];
-            #   description = ''
-            #     The set of features supported by the machine. Derivations
-            #     can express dependencies on system features through the
-            #     <literal>requiredSystemFeatures</literal> attribute.
+            system-features = mkOption {
+              type = types.listOf types.str;
+              example = [ "nixos-test" "benchmark" "big-parallel" ];
+              default = [ "nixos-test" "benchmark" "big-parallel" ];
+              description = ''
+                The set of features supported by the machine. Derivations
+                can express dependencies on system features through the
+                <literal>requiredSystemFeatures</literal> attribute.
 
-            #     By default, pseudo-features <literal>nixos-test</literal>, <literal>benchmark</literal>,
-            #     and <literal>big-parallel</literal> used in Nixpkgs are set, <literal>kvm</literal>
-            #     is also included in it is avaliable.
-            #   '';
-            # };
+                By default, pseudo-features <literal>nixos-test</literal>, <literal>benchmark</literal>,
+                and <literal>big-parallel</literal> used in Nixpkgs are set, <literal>kvm</literal>
+                is also included in it is avaliable.
+              '';
+            };
 
             allowed-users = mkOption {
               type = types.listOf types.str;
@@ -810,16 +810,6 @@ in
       {
         trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
         substituters = mkAfter [ "https://cache.nixos.org/" ];
-
-        # Not implemented yet
-        # system-features = mkDefault (
-        #   [ "nixos-test" "benchmark" "big-parallel" "kvm" ] ++
-        #   optionals (pkgs.hostPlatform ? gcc.arch) (
-        #     # a builder can run code for `gcc.arch` and inferior architectures
-        #     [ "gccarch-${pkgs.hostPlatform.gcc.arch}" ] ++
-        #     map (x: "gccarch-${x}") systems.architectures.inferiors.${pkgs.hostPlatform.gcc.arch}
-        #   )
-        # );
       }
 
       (mkIf (!cfg.distributedBuilds) { builders = null; })
