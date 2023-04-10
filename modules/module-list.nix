@@ -68,7 +68,6 @@
   ./services/lorri.nix
   ./services/mail/offlineimap.nix
   ./services/mopidy.nix
-  ./services/monitoring/telegraf.nix
   ./services/netbird.nix
   ./services/nix-daemon.nix
   ./services/nix-serve.nix
