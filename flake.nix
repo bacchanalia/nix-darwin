@@ -79,7 +79,15 @@
     in {
       default = self.packages.${system}.darwin-rebuild;
 
-      inherit (pkgs) darwin-option darwin-rebuild darwin-version darwin-uninstaller;
+      inherit (pkgs) darwin-option darwin-rebuild darwin-version darwin-installer darwin-uninstaller;
     });
+
+    apps = forAllSystems (system: let
+      pkgs = packages.${system};
+    in {
+      inherit (pkgs) darwin-installer darwin-uninstaller;
+    });
+
+    defaultApp = forAllSystems (system: packages.${system}.darwin-installer);
   };
 }
